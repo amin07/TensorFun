@@ -102,7 +102,7 @@ def setup_graph(graph, config):
         rnn_outputs, final_state = tf.nn.dynamic_rnn(cell, rnn_inputs, initial_state=init_state)
         
 #         with tf.Session() as sess:
-#             print(sess.run(tf.shape(rnn_outputs)))
+#             print('rnn_output shape', sess.run(tf.shape(rnn_outputs)))
         """
         Predictions, loss, training step
         Losses and total_loss are simlar to the "sequence_loss_by_example" and "sequence_loss"

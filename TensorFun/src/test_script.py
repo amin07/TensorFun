@@ -74,4 +74,23 @@ if __name__ == '__main__':
         print (sess.run(tf.nn.softmax_cross_entropy_with_logits(labels=logits, logits=logits2)))
     '''
     
-    print (list(zip([1,2,4,3],['a','b','c','d','e','f'])))
+    #print (list(zip([1,2,4,3],['a','b','c','d','e','f'])))
+    
+    
+    #split squeeze test
+    x = tf.random_uniform([4,5,2], minval=0, maxval=10, dtype=tf.float32)
+    #y = [tf.squeeze(i) for i in tf.split(x, num_or_size_splits=5, axis=1)]
+    y = tf.random_uniform([12,2], minval=0, maxval=10, dtype=tf.float32)
+    
+        
+    with tf.Session() as sess:
+        #print (sess.run(tf.split(x,num_or_size_splits=5,axis=1)))
+        #print (sess.run(y))
+        #print (sess.run(tf.unstack(x, axis=1)))
+        #print (sess.run([tf.shape(tf.unstack(x, axis=1)), tf.shape(x)]))
+        vals = sess.run(y)
+        print (vals)
+        print (sess.run(tf.reshape(vals, [3,4,2])))
+    
+    
+    
