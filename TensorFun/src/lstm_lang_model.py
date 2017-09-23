@@ -210,8 +210,8 @@ def build_multilayer_lstm_graph_with_dynamic_rnn(
 
     reset_graph()
 
-    x = tf.placeholder(tf.int32, [batch_size, None], name='input_placeholder')
-    y = tf.placeholder(tf.int32, [batch_size, None], name='labels_placeholder')
+    x = tf.placeholder(tf.int32, [batch_size, num_steps], name='input_placeholder')
+    y = tf.placeholder(tf.int32, [batch_size, num_steps], name='labels_placeholder')
 
     embeddings = tf.get_variable('embedding_matrix', [num_classes, state_size])
     
@@ -221,7 +221,7 @@ def build_multilayer_lstm_graph_with_dynamic_rnn(
     rnn_inputs = tf.nn.embedding_lookup(embeddings, x)
     
 #     with tf.Session() as sess:
-#         print (sess.run(tf.shape(rnn_inputs)))
+#         print (sess.run([tf.shape(rnn_inputs), tf.shape(embeddings), tf.shape(x)]))
 #     sys.exit()
 
     cell = tf.nn.rnn_cell.LSTMCell(state_size, state_is_tuple=True)
